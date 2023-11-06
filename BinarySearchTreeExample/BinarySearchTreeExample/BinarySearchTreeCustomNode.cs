@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Xml.Linq;
-
-namespace BinarySearchTreeExample
+﻿namespace BinarySearchTreeExample
 {
     public class BinarySearchTreeCustomNode<T> where T : IComparable<T>
     {
@@ -62,6 +59,48 @@ namespace BinarySearchTreeExample
                     yield return subNode;
                 }
             }
+        }
+
+        public IEnumerable<T> TraversePreorder()
+        {
+            yield return Value;
+
+            if (Left != null)
+            {
+                foreach (var subNode in Left.TraversePreorder())
+                {
+                    yield return subNode;
+                }
+            }
+
+            if (Right != null)
+            {
+                foreach (var subNode in Right.TraversePreorder())
+                {
+                    yield return subNode;
+                }
+            }
+        }
+
+        public IEnumerable<T> TraversePostorder()
+        {
+            if (Left != null)
+            {
+                foreach (var subNode in Left.TraversePostorder())
+                {
+                    yield return subNode;
+                }
+            }
+
+            if (Right != null)
+            {
+                foreach (var subNode in Right.TraversePostorder())
+                {
+                    yield return subNode;
+                }
+            }
+
+            yield return Value;
         }
     }
 }

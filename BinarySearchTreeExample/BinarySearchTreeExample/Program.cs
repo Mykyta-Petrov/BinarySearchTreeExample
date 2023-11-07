@@ -33,6 +33,13 @@
                 Console.Write($"{i} ");
             }
             Console.WriteLine();
+
+            Console.WriteLine("\nLevel order: ");
+            foreach (int i in tree.TraverseLevelOrder())
+            {
+                Console.Write($"{i} ");
+            }
+            Console.WriteLine();
         }
     }
 }
